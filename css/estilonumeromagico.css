@@ -1,0 +1,91 @@
+*{
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
+	text-decoration: none;
+	font-family: 'Kaushan Script', cursive;
+	box-sizing: border-box;
+}
+
+.contenedor{
+	position: absolute;
+	margin: auto;
+	width: 100%;
+	height: 100%;
+	background-image: url("../img/Numero.gif");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.fila{
+	position: relative;
+	margin: auto;
+	width: 100%;
+	height: auto;
+	clear: both;
+	display: table; 	
+}
+
+.parrafo{
+	color: black;
+	font-size: 20px;
+}
+
+input[type=number] {
+	height: 40px;
+  	background-color: white;
+  	color: purple;
+  	font-size: 20px;
+}
+
+.boton{
+	width: 25%;
+	border: 1px solid purple;
+	padding: 10px;
+	text-align: center;
+	color: purple;
+}
+
+.button:hover{
+	transition-duration: 0.4s;
+	background-color: #4CAF50; /* Green */
+  	color: white
+}
+
+.columnaboton{
+	float: left;
+	width: 33.33333333%;
+	border: 1px solid transparent;
+	padding: 20px;
+	margin-bottom: 0px;
+	text-align: center;
+}
+
+.columna12{
+	float: left;
+	width: 100%;
+	border:1px solid transparent;
+	padding: 20px;
+	margin-bottom: 50px; 
+	text-align: center;
+}
+
+.columna5{
+	float: right;
+	width: 41.66666666666667%;
+	border:1px solid transparent;
+	padding: 20px;
+	text-align: center;
+}
+
+.columna4{
+	float: left;
+	width: 33.33333333%;
+	border: 1px solid transparent;
+	padding: 20px;
+	text-align: center;
+}
+
+
+
+

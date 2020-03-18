@@ -1,0 +1,96 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	text-decoration: none;
+	font-family: sans-serif;
+	box-sizing: border-box;
+	color: white !important;
+}
+
+.pasos{
+    background: #6BE6FF !important;
+}
+.pasosEnFalso{
+    background: red !important;
+}
+
+body {
+	background: #D1D5D4;
+	background-image: url(../img/fondo.jpg);
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+
+.contenedor section {
+	position:static;
+	margin: auto;
+	width: 75%;
+	height: 75%;
+	float: left;
+}
+
+.contenedor aside {
+	width: 25%;
+}
+
+aside h4, aside #historial {
+	padding-top: 15%;
+	text-align: justify;
+	text-justify: auto;
+}
+
+aside #historial {
+	padding-top: 1%;
+	font-size: 12px;
+}
+
+.fila {
+	position: relative;
+	margin: auto;
+	width: 100%;
+	height: auto;
+	clear: both;
+	display: table; 	
+}
+
+.columna12 {
+	float: left;
+	width: 100%;
+	border: 1px solid transparent;
+	padding: 20px;
+	text-align: center;
+	color: #2c2c2c;
+}
+
+.columna1 {
+	float: left;
+	width: 8.3%;
+	height: 70px;
+	border: 1px solid black;
+	padding: 0px;
+	text-align: center;
+	color: black;
+}
+
+.columnatransparente{
+	float: left;
+	width: 8.3%;
+	height: 70px;
+	border: 1px solid transparent;
+	padding: 0px;
+	text-align: center;
+	color: #2c2c2c;
+}
+
+.negro{
+	background: #2c2c2c;
+}
+
+.blanco{
+	background: #b6b6b6;
+}
+*img {
+	height: 20px;
+	width: 20px;
+}
