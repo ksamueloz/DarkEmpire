@@ -10,10 +10,19 @@ new Vue({
         imagenes: [
             "./img/cabra.jpg",
             "./img/conejo.jpg",
+        ],
+        imagenes2: [
+            "./img/cabra.jpg",
+            "./img/conejo.jpg",
+            "./img/perro.jpg",
+        ],
+        imagenes3: [
+            "./img/cabra.jpg",
+            "./img/conejo.jpg",
+            "./img/gato.jpg",
             "./img/leon.jpg",
             "./img/oveja.jpg",
             "./img/perro.jpg",
-            "./img/gato.jpg",
         ],
         memorama: [],
         // Útiles para saber cuál fue la carta anteriormente seleccionada
@@ -30,6 +39,7 @@ new Vue({
     
         intentos: 0,
         aciertos: 0,
+        nivel: 0,
         esperandoTimeout: false,
         tiempo: false
     }),
@@ -53,9 +63,9 @@ new Vue({
             }
             return imagen;
         },
-        jugar() {
+        jugar(imagenes) {
             let memorama = [];
-            this.imagenes.forEach((imagen) => {
+            imagenes.forEach((imagen) => {
                 let imagenDeMemorama = {
                     ruta: imagen,
                     mostrar: false, // No se muestra la original
@@ -79,7 +89,7 @@ new Vue({
         },
         // Método que precarga las imágenes para que las mismas ya estén cargadas
         // cuando el usuario gire la tarjeta
-        cargarImagenes() {
+        cargarImagenes(imagenes) {
             // Mostrar la alerta
             Swal.fire({
                     title: "Cargando",
@@ -92,9 +102,9 @@ new Vue({
             Swal.showLoading();
 
 
-            let total = this.imagenes.length;
+            let total = imagenes.length;
             let contador = 0;
-            let imagenesPrecarga = Array.from(this.imagenes);
+            let imagenesPrecarga = Array.from(imagenes);
             // También vamos a precargar la "espalda" de la tarjeta
             imagenesPrecarga.push(imagen_oculta);
             // Cargamos cada imagen y en el evento load aumentamos el contador
@@ -105,7 +115,7 @@ new Vue({
                     contador++;
                     if (contador >= total) {
                         // Si el contador >= total entonces se ha terminado la carga de todas
-                        this.jugar();
+                        this.jugar(imagenes);
                         Swal.close();
                     }
                 });
@@ -181,26 +191,59 @@ new Vue({
                     allowOutsideClick: false,
                     allowEscapeKey: false,
                 })
-                .then(this.jugar);
+                .then(this.jugar(this.imagenes));
             }, espera * 2000);
+            this.nivel = 0;
         },
         gameWin() {
-            setTimeout(() => {
-                Swal.fire({
-                    title: "¡Ganaste!",
-                    html: `
-                <img class="img-fluid" src="./img/ganaste.png" alt="Ganaste">
-                <p class="h4">Muy bien hecho</p>`,
-                    confirmButtonText: "Jugar de nuevo",
-                    allowOutsideClick: false,
-                    allowEscapeKey: false,
-                })
-                .then(this.jugar)
-            }, espera * 2000);
+            this.nivel++;
+            if(this.nivel == 1){
+                setTimeout(() => {
+                    Swal.fire({
+                        title: "¡Ganaste!",
+                        html: `
+                    <img class="img-fluid" src="./img/ganaste.png" alt="Ganaste">
+                    <p class="h4">Muy bien hecho</p>`,
+                        confirmButtonText: "Próximo Nivel",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    })
+                    .then(this.jugar(this.imagenes2));
+                }, espera * 2000);              
+            } 
+            if(this.nivel == 2) {
+                setTimeout(() => {
+                    Swal.fire({
+                        title: "¡Ganaste!",
+                        html: `
+                    <img class="img-fluid" src="./img/ganaste.png" alt="Ganaste">
+                    <p class="h4">Muy bien hecho</p>`,
+                        confirmButtonText: "Próximo Nivel",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    })
+                    .then(this.jugar(this.imagenes3));
+                }, espera * 2000);
+            } 
+            if(this.nivel == 3) {
+                setTimeout(() => {
+                    Swal.fire({
+                        title: "¡Ganaste, Completaste El Juego!",
+                        html: `
+                    <img class="img-fluid" src="./img/ganaste.png" alt="Ganaste">
+                    <p class="h4">Muy bien hecho</p>`,
+                        confirmButtonText: "Jugar de nuevo",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                    })
+                    .then(this.jugar(this.imagenes));
+                }, espera * 2000);
+                this.nivel = 0;
+            }
             
         },        
     },
     mounted() {
-        this.cargarImagenes();
+        this.cargarImagenes(this.imagenes);
     },
 });
